@@ -1,0 +1,35 @@
+{
+    "NeutronNetworks.create_update_and_list_ports": [
+        {
+            "args": {
+                "network_create_args": {},
+                "subnet_create_args": {},
+                "subnet_cidr_start": "2.50.0.0/16",
+                "subnets_per_network": 1,
+                "port_create_args": {},
+                "port_update_args": {
+                "admin_state_up" : "False",
+                "name" : "_updated_port"},
+                "ports_per_network": 1
+            },
+            "runner": {
+                "type": "constant",
+                "times": 500,
+                "concurrency": 250
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                },
+                "quotas": {
+                    "neutron": {
+                        "network": -1,
+                        "subnet": -1,
+                        "port": -1
+                    }
+                }
+            }
+        }
+    ]
+}

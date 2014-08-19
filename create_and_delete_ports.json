@@ -1,0 +1,32 @@
+{
+    "NeutronNetworks.create_and_delete_ports": [
+        {
+            "args": {
+                "network_create_args": {},
+                "subnet_create_args": {},
+                "subnet_cidr_start": "4.1.0.0/16",
+                "subnets_per_network": 1,
+                "port_create_args": {},
+                "ports_per_network": 10
+            },
+            "runner": {
+                "type": "constant",
+                "times": 300,
+                "concurrency": 150
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                },
+                "quotas": {
+                    "neutron": {
+                        "network": -1,
+                        "subnet": -1,
+                        "port": -1
+                    }
+                }
+            }
+        }
+    ]
+}

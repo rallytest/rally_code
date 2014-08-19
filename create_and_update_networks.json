@@ -1,0 +1,27 @@
+{
+    "NeutronNetworks.create_and_update_networks": [
+        {
+            "args": {
+                "network_update_args": {
+                "name" : "_updated_net"},
+                "network_create_args": {}
+            },
+            "runner": {
+                "type": "constant",
+                "times": 400,
+                "concurrency": 200
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                },
+                "quotas": {
+                    "neutron": {
+                        "network": -1
+                    }
+                }
+            }
+        }
+    ]
+}
